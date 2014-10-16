@@ -1,28 +1,29 @@
-== README
+# Things done:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- recreated the app in 4.2
+- added rack-mini-profiler to monitor
 
-Things you may want to cover:
+[81_708 ms]
 
-* Ruby version
+- use puma
 
-* System dependencies
+[83_874]
 
-* Configuration
+- brutish fragment caching on posts, comments and replies
 
-* Database creation
+[278_225]
 
-* Database initialization
+- eager_loading and dont include any comments
 
-* How to run the test suite
+```
+ post.all.includes(:comments)
+ comment.all.includes(:replies)
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+[1_417] ([21_325] with all comments)
 
-* Deployment instructions
+If I build myself the whole list of posts, instead of letting Rails form the partials, plus I cache this big blob, the load time is small
 
-* ...
+[51]
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

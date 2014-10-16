@@ -1,0 +1,12 @@
+<!-- % cache @pid do %> -->
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <h3>Comment <%= comment.id %>:</h3>
+      <p><%= comment.body %></p>
+
+      <div id=<%= "#{comment.id}" %> class="rep_section">
+        <%= number_of_replies_link(comment) %>
+      </div>
+    </div>
+  <% end %>
+<!-- % end %> -->

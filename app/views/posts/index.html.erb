@@ -1,7 +1,22 @@
 <h1>Ivan the Terrible's Blog</h1>
 
 <section class="blog">
-  <%= render @posts %>
+<!--   %= render @posts %> -->
+<% cache 'v1' do %>
+  <% @posts.each do |post| %>
+    <section class="post">
+      <h2>Post <%= "#{post.id}: #{post.title}" %></h2>
+      <div class="post"><%= post.body %></div>
+
+      <%= render 'post_nav', post: post %>
+
+      <div id=<%= "#{post.id}" %> class="com_section">
+        <%= number_of_comments_link(post) %>
+      </div>
+    </section>
+  <% end %>
+<% end %>
+
 </section>
 
 <br />
